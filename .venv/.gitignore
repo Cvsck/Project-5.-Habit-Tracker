@@ -1,0 +1,30 @@
+# 🔐 Секреты
+.env
+.envrc
+
+# 🗄️ База данных
+*.sqlite3
+celerybeat-schedule*
+redis.conf
+
+# 🐍 Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 📦 Poetry / venv
+venv/
+.poetry/
+
+# 🧪 Тесты
+.coverage
+htmlcov/
+
+# 🧠 IDE
+.idea/
+.vscode/
+
+# 📄 Логи и временные файлы
+*.log
+*.tmp
+*.bak
