@@ -12,9 +12,7 @@ class CustomUserAdmin(UserAdmin):
     # Добавляем поле telegram_chat_id в админку
     fieldsets = UserAdmin.fieldsets + ((None, {"fields": ("telegram_chat_id",)}),)
 
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {"fields": ("telegram_chat_id",)}),
-    )
+    add_fieldsets = UserAdmin.add_fieldsets + ((None, {"fields": ("telegram_chat_id",)}),)
 
     list_display = ["email", "username", "is_staff", "telegram_chat_id"]
     search_fields = ["email", "username", "telegram_chat_id"]

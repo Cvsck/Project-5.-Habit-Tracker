@@ -44,9 +44,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "duration",
-                    models.PositiveIntegerField(
-                        help_text="Продолжительность в секундах"
-                    ),
+                    models.PositiveIntegerField(help_text="Продолжительность в секундах"),
                 ),
                 ("is_public", models.BooleanField(default=False)),
                 (

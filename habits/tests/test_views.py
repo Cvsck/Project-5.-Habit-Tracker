@@ -9,9 +9,7 @@ from habits.models import Habit
 
 @pytest.mark.django_db
 def test_get_habit_list():
-    user = CustomUser.objects.create_user(
-        username="testuser", email="test@example.com", password="pass"
-    )
+    user = CustomUser.objects.create_user(username="testuser", email="test@example.com", password="pass")
 
     Habit.objects.create(
         user=user,

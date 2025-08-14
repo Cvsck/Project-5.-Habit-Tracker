@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Habit
+from .permissions import IsOwner
 from .serializers import HabitSerializer
 from .tasks import send_reminder
 
@@ -16,7 +17,7 @@ class HabitViewSet(viewsets.ModelViewSet):
     """
 
     serializer_class = HabitSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get_queryset(self):
         # Возвращает привычки текущего пользователя, отсортированные по id

@@ -20,22 +20,15 @@ class Habit(models.Model):
     is_pleasant = models.BooleanField(default=False)
     reward = models.CharField(max_length=100, blank=True, null=True)
     periodicity = models.CharField(max_length=20, choices=PERIODICITY_CHOICES)
-    duration = models.PositiveIntegerField(
-        help_text="Продолжительность в секундах"
-    )  # seconds
+    duration = models.PositiveIntegerField(help_text="Продолжительность в секундах")  # seconds
     is_public = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="habits")
-    linked_habit = models.ForeignKey(
-        "self", on_delete=models.SET_NULL, null=True, blank=True
-    )
-    chat_id = models.CharField(max_length=64, blank=True, null=True)
+    linked_habit = models.ForeignKey("self", on_delete=models.SET_NULL, null=True, blank=True)
 
     def clean(self):
         # ❌ Нельзя одновременно указать linked_habit и reward
         if self.linked_habit and self.reward:
-            raise ValidationError(
-                "Нельзя одновременно указать связанную привычку и вознаграждение."
-            )
+            raise ValidationError("Нельзя одновременно указать связанную привычку и вознаграждение.")
 
         # ⏱️ Время выполнения не должно превышать 120 секунд
         if self.duration > 120:
@@ -47,9 +40,7 @@ class Habit(models.Model):
 
         # 🎁 Приятная привычка не может иметь награду или связанную привычку
         if self.is_pleasant and (self.reward or self.linked_habit):
-            raise ValidationError(
-                "Приятная привычка не может иметь награду или связанную привычку."
-            )
+            raise ValidationError("Приятная привычка не может иметь награду или связанную привычку.")
 
         # 📅 Периодичность не может быть больше 7 дней — если custom, нужно уточнять отдельно
         if self.periodicity == "custom":

@@ -26,9 +26,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=150, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    telegram_chat_id = models.CharField(
-        max_length=50, blank=True, null=True
-    )  # 👈 добавили
+    telegram_chat_id = models.CharField(max_length=50, blank=True, null=True)  # 👈 добавили
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
