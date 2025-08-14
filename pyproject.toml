@@ -1,0 +1,32 @@
+[project]
+name = "project-5-habit-tracker"
+version = "0.1.0"
+description = "Django-based habit tracker with Telegram integration"
+authors = [{ name = "Maksim Pestov", email = "moikry@mail.ru" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.4,<6.0.0",
+    "djangorestframework>=3.16.0,<4.0.0",
+    "drf-spectacular",
+    "djangorestframework-simplejwt"
+]
+
+[tool.poetry]
+packages = [
+    { include = "accounts" },
+    { include = "habits" },
+    { include = "telegram_bot" },
+    { include = "config" }
+]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0"
+pytest-django = ">=4.5"
+coverage = "*"
+black = "*"
+flake8 = "*"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
